@@ -1,0 +1,3 @@
+[submodule "RobbEngine/vendor/spdlog"]
+	path = RobbEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
