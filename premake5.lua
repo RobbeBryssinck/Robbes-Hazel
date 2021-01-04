@@ -1,109 +1,122 @@
 workspace "RobbEngine"
-	architecture "x64"
+  architecture "x64"
 
-	configurations
-	{
-		"Debug",
-		"Release",
-		"Dist"
-	}
+  configurations
+  {
+    "Debug",
+    "Release",
+    "Dist"
+  }
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "RobbEngine/vendor/GLFW/include"
+
+include "RobbEngine/vendor/GLFW"
+
 project "RobbEngine"
-	location "RobbEngine"
-	kind "SharedLib"
-	language "C++"
+  location "RobbEngine"
+  kind "SharedLib"
+  language "C++"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+  targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+  objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	pchheader "repch.h"
-	pchsource "RobbEngine/src/repch.cpp"
+  pchheader "repch.h"
+  pchsource "RobbEngine/src/repch.cpp"
 
-	files
-	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
-	}
+  files
+  {
+    "%{prj.name}/src/**.h",
+    "%{prj.name}/src/**.cpp"
+  }
 
-	includedirs
-	{
-		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
-	}
+  includedirs
+  {
+    "%{prj.name}/src",
+    "%{prj.name}/vendor/spdlog/include",
+    "%{IncludeDir.GLFW}"
+  }
 
-	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
-		systemversion "latest"
+  links 
+  { 
+    "GLFW",
+    "opengl32.lib"
+  }
 
-		defines
-		{
-			"RE_PLATFORM_WINDOWS",
-			"RE_BUILD_DLL"
-		}
+  filter "system:windows"
+    cppdialect "C++17"
+    staticruntime "On"
+    systemversion "latest"
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
+    defines
+    {
+      "RE_PLATFORM_WINDOWS",
+      "RE_BUILD_DLL"
+    }
 
-	filter "configurations:Debug"
-		defines "RE_DEBUG"
-		symbols "On"
+    postbuildcommands
+    {
+      ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+    }
 
-	filter "configurations:Release"
-		defines "RE_RELEASE"
-		optimize "On"
+  filter "configurations:Debug"
+    defines "RE_DEBUG"
+    symbols "On"
 
-	filter "configurations:Dist"
-		defines "RE_DIST"
-		optimize "On"
+  filter "configurations:Release"
+    defines "RE_RELEASE"
+    optimize "On"
+
+  filter "configurations:Dist"
+    defines "RE_DIST"
+    optimize "On"
 
 project "Sandbox"
-	location "Sandbox"
-	kind "ConsoleApp"
-	language "C++"
+  location "Sandbox"
+  kind "ConsoleApp"
+  language "C++"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+  targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+  objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files
-	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
-	}
+  files
+  {
+    "%{prj.name}/src/**.h",
+    "%{prj.name}/src/**.cpp"
+  }
 
-	includedirs
-	{
-		"RobbEngine/vendor/spdlog/include",
-		"RobbEngine/src"
-	}
+  includedirs
+  {
+    "RobbEngine/vendor/spdlog/include",
+    "RobbEngine/src"
+  }
 
-	links
-	{
-		"RobbEngine"
-	}
+  links
+  {
+    "RobbEngine"
+  }
 
-	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
-		systemversion "latest"
+  filter "system:windows"
+    cppdialect "C++17"
+    staticruntime "On"
+    systemversion "latest"
 
-		defines
-		{
-			"RE_PLATFORM_WINDOWS"
-		}
+    defines
+    {
+      "RE_PLATFORM_WINDOWS"
+    }
 
-	filter "configurations:Debug"
-		defines "RE_DEBUG"
-		symbols "On"
+  filter "configurations:Debug"
+    defines "RE_DEBUG"
+    symbols "On"
 
-	filter "configurations:Release"
-		defines "RE_RELEASE"
-		optimize "On"
+  filter "configurations:Release"
+    defines "RE_RELEASE"
+    optimize "On"
 
-	filter "configurations:Dist"
-		defines "RE_DIST"
-		optimize "On"
+  filter "configurations:Dist"
+    defines "RE_DIST"
+    optimize "On"
