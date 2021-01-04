@@ -40,6 +40,12 @@
     <ClInclude Include="src\RobbEngine\Events\MouseEvent.h">
       <Filter>RobbEngine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\RobbEngine\Layer.h">
+      <Filter>RobbEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RobbEngine\LayerStack.h">
+      <Filter>RobbEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\RobbEngine\Log.h">
       <Filter>RobbEngine</Filter>
     </ClInclude>
@@ -53,6 +59,12 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\RobbEngine\Application.cpp">
+      <Filter>RobbEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RobbEngine\Layer.cpp">
+      <Filter>RobbEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RobbEngine\LayerStack.cpp">
       <Filter>RobbEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\RobbEngine\Log.cpp">

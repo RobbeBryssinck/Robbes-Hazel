@@ -3,6 +3,7 @@
 // For use by RobbEngine applications
 
 #include "RobbEngine/Application.h"
+#include "RobbEngine/Layer.h"
 #include "RobbEngine/Log.h"
 
 // --Entry Point------------------------
