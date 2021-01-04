@@ -5,7 +5,7 @@
       <UniqueIdentifier>{60DEF894-4C96-3AE2-B59D-133EA174D5D2}</UniqueIdentifier>
     </Filter>
     <Filter Include="RobbEngine\Events">
-      <UniqueIdentifier>{1ee1e14d-142f-43ef-a094-8b79d36a07f9}</UniqueIdentifier>
+      <UniqueIdentifier>{449EB8C8-B0B4-B65E-F92B-4280658187E6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,15 +19,22 @@
     <ClInclude Include="src\RobbEngine\EntryPoint.h">
       <Filter>RobbEngine</Filter>
     </ClInclude>
-    <ClInclude Include="src\RobbEngine\Log.h">
-      <Filter>RobbEngine</Filter>
+    <ClInclude Include="src\RobbEngine\Events\ApplicationEvent.h">
+      <Filter>RobbEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\RobbEngine\Events\Event.h">
       <Filter>RobbEngine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\RobbEngine\Events\KeyEvent.h" />
-    <ClInclude Include="src\RobbEngine\Events\MouseEvent.h" />
-    <ClInclude Include="src\RobbEngine\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\RobbEngine\Events\KeyEvent.h">
+      <Filter>RobbEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RobbEngine\Events\MouseEvent.h">
+      <Filter>RobbEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RobbEngine\Log.h">
+      <Filter>RobbEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\RobbEngine\Application.cpp">
@@ -36,5 +43,6 @@
     <ClCompile Include="src\RobbEngine\Log.cpp">
       <Filter>RobbEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\repch.cpp" />
   </ItemGroup>
 </Project>

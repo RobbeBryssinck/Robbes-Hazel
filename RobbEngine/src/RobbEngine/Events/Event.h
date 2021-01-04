@@ -2,9 +2,6 @@
 
 #include "RobbEngine\Core.h"
 
-#include <string>
-#include <functional>
-
 namespace RobbEngine {
 
     // Events are blocking right now. Should add event bus.

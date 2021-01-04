@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace RobbEngine {
 
 	class ROBBENGINE_API MouseMovedEvent : public Event
