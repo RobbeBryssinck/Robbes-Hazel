@@ -13,10 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "RobbEngine/vendor/GLFW/include"
-IncludeDir["GLAD"] = "RobbEngine/vendor/GLAD/include"
+IncludeDir["Glad"] = "RobbEngine/vendor/Glad/include"
+IncludeDir["imgui"] = "RobbEngine/vendor/imgui"
 
 include "RobbEngine/vendor/GLFW"
-include "RobbEngine/vendor/GLAD"
+include "RobbEngine/vendor/Glad"
+include "RobbEngine/vendor/imgui"
 
 project "RobbEngine"
   location "RobbEngine"
@@ -40,13 +42,15 @@ project "RobbEngine"
     "%{prj.name}/src",
     "%{prj.name}/vendor/spdlog/include",
     "%{IncludeDir.GLFW}",
-    "%{IncludeDir.GLAD}"
+    "%{IncludeDir.Glad}",
+    "%{IncludeDir.imgui}"
   }
 
   links 
   { 
     "GLFW",
-    "GLAD",
+    "Glad",
+    "imgui",
     "opengl32.lib"
   }
 

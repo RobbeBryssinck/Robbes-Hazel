@@ -4,3 +4,6 @@
 [submodule "RobbEngine/vendor/GLFW"]
 	path = RobbEngine/vendor/GLFW
 	url = https://github.com/TheCherno/GLFW
+[submodule "RobbEngine/vendor/imgui"]
+	path = RobbEngine/vendor/imgui
+	url = https://github.com/TheCherno/imgui

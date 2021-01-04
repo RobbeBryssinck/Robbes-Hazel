@@ -8,9 +8,13 @@ public:
 	{
 	}
 
+	void OnAttach() override
+	{
+		RE_INFO("Attached ExampleLayer!");
+	}
+
 	void OnUpdate() override
 	{
-		RE_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(RobbEngine::Event& event) override
@@ -25,6 +29,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new RobbEngine::ImGuiLayer());
 	}
 
 	~Sandbox()
