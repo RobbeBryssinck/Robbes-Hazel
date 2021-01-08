@@ -1,5 +1,6 @@
 workspace "RobbEngine"
   architecture "x64"
+  startproject "Sandbox"
 
   configurations
   {
@@ -16,14 +17,18 @@ IncludeDir["GLFW"] = "RobbEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "RobbEngine/vendor/Glad/include"
 IncludeDir["imgui"] = "RobbEngine/vendor/imgui"
 
-include "RobbEngine/vendor/GLFW"
-include "RobbEngine/vendor/Glad"
-include "RobbEngine/vendor/imgui"
+group "Dependencies"
+  include "RobbEngine/vendor/GLFW"
+  include "RobbEngine/vendor/Glad"
+  include "RobbEngine/vendor/imgui"
+
+group ""
 
 project "RobbEngine"
   location "RobbEngine"
   kind "SharedLib"
   language "C++"
+  staticruntime "off"
 
   targetdir ("bin/" .. outputdir .. "/%{prj.name}")
   objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -56,7 +61,6 @@ project "RobbEngine"
 
   filter "system:windows"
     cppdialect "C++17"
-    staticruntime "On"
     systemversion "latest"
 
     defines
@@ -68,28 +72,29 @@ project "RobbEngine"
 
     postbuildcommands
     {
-      ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+      ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
     }
 
   filter "configurations:Debug"
     defines "RE_DEBUG"
-    buildoptions "/MDd"
+    runtime "Debug"
     symbols "On"
 
   filter "configurations:Release"
     defines "RE_RELEASE"
-    buildoptions "/MD"
+    runtime "Release"
     optimize "On"
 
   filter "configurations:Dist"
     defines "RE_DIST"
-    buildoptions "/MD"
+    runtime "Release"
     optimize "On"
 
 project "Sandbox"
   location "Sandbox"
   kind "ConsoleApp"
   language "C++"
+  staticruntime "off"
 
   targetdir ("bin/" .. outputdir .. "/%{prj.name}")
   objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -113,7 +118,6 @@ project "Sandbox"
 
   filter "system:windows"
     cppdialect "C++17"
-    staticruntime "On"
     systemversion "latest"
 
     defines
@@ -123,15 +127,15 @@ project "Sandbox"
 
   filter "configurations:Debug"
     defines "RE_DEBUG"
-    buildoptions "/MDd"
+    runtime "Debug"
     symbols "On"
 
   filter "configurations:Release"
     defines "RE_RELEASE"
-    buildoptions "/MD"
+    runtime "Release"
     optimize "On"
 
   filter "configurations:Dist"
     defines "RE_DIST"
-    buildoptions "/MD"
+    runtime "Release"
     optimize "On"
