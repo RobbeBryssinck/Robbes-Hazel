@@ -162,9 +162,11 @@
     <ClInclude Include="src\RobbEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\RobbEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\RobbEngine\Input.h" />
+    <ClInclude Include="src\RobbEngine\KeyCodes.h" />
     <ClInclude Include="src\RobbEngine\Layer.h" />
     <ClInclude Include="src\RobbEngine\LayerStack.h" />
     <ClInclude Include="src\RobbEngine\Log.h" />
+    <ClInclude Include="src\RobbEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\RobbEngine\Window.h" />
     <ClInclude Include="src\repch.h" />
   </ItemGroup>

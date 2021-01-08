@@ -15,11 +15,19 @@ public:
 
 	void OnUpdate() override
 	{
+		if (RobbEngine::Input::IsKeyPressed(RE_KEY_TAB))
+			RE_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(RobbEngine::Event& event) override
 	{
-		RE_TRACE("{0}", event);
+		if (event.GetEventType() == RobbEngine::EventType::KeyPressed)
+		{
+			RobbEngine::KeyPressedEvent& e = (RobbEngine::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == RE_KEY_TAB)
+				RE_TRACE("Tab key is pressed (event)!");
+			RE_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 
