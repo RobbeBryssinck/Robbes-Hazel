@@ -7,3 +7,6 @@
 [submodule "RobbEngine/vendor/imgui"]
 	path = RobbEngine/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "RobbEngine/vendor/glm"]
+	path = RobbEngine/vendor/glm
+	url = https://github.com/g-truc/glm.git

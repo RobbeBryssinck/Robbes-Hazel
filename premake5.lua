@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "RobbEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "RobbEngine/vendor/Glad/include"
 IncludeDir["imgui"] = "RobbEngine/vendor/imgui"
+IncludeDir["glm"] = "RobbEngine/vendor/glm"
 
 group "Dependencies"
   include "RobbEngine/vendor/GLFW"
@@ -39,7 +40,9 @@ project "RobbEngine"
   files
   {
     "%{prj.name}/src/**.h",
-    "%{prj.name}/src/**.cpp"
+    "%{prj.name}/src/**.cpp",
+    "%{prj.name}/vendor/glm/glm/**.hpp",
+    "%{prj.name}/vendor/glm/glm/**.inl",
   }
 
   includedirs
@@ -48,7 +51,8 @@ project "RobbEngine"
     "%{prj.name}/vendor/spdlog/include",
     "%{IncludeDir.GLFW}",
     "%{IncludeDir.Glad}",
-    "%{IncludeDir.imgui}"
+    "%{IncludeDir.imgui}",
+    "%{IncludeDir.glm}"
   }
 
   links 
@@ -108,7 +112,8 @@ project "Sandbox"
   includedirs
   {
     "RobbEngine/vendor/spdlog/include",
-    "RobbEngine/src"
+    "RobbEngine/src",
+    "%{IncludeDir.glm}"
   }
 
   links
