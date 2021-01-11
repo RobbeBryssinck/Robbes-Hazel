@@ -6,6 +6,8 @@
 #include "Events/Event.h"
 #include "RobbEngine/Events/ApplicationEvent.h"
 
+#include "RobbEngine/ImGui/ImGuiLayer.h"
+
 #include "Window.h"
 
 namespace RobbEngine {
@@ -30,6 +32,7 @@ namespace RobbEngine {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

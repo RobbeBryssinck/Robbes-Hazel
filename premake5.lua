@@ -113,6 +113,7 @@ project "Sandbox"
   {
     "RobbEngine/vendor/spdlog/include",
     "RobbEngine/src",
+    "RobbEngine/vendor",
     "%{IncludeDir.glm}"
   }
 
