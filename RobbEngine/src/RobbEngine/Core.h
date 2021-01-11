@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef RE_PLATFORM_WINDOWS
+#if RE_DYNAMIC_LINK
 	#ifdef RE_BUILD_DLL
 		#define ROBBENGINE_API __declspec(dllexport)
 	#else
 		#define ROBBENGINE_API __declspec(dllimport)
 	#endif
+#else
+	#define ROBBENGINE_API
+#endif
 #else
 	#error RobbEngine only supports Windows!
 #endif
